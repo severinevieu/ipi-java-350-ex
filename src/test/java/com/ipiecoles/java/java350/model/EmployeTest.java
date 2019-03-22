@@ -84,5 +84,43 @@ public class EmployeTest {
         Assertions.assertEquals(primeAnnuelle, prime);
 
     }
+    @Test
+    public void getAugmenterSalaire(){
+        //Given
+        Employe e = new Employe();
+        e.setSalaire(1521.22);
+
+        //When
+        //double augmenterSalaire = e.augmenterSalaire(5 );
+
+        //Then
+        //Assertions.assertEquals(1604.88, augmenterSalaire);
+    }
+    @Test
+    public void getAugmentationSalaire(){
+        //Given
+        Employe e = new Employe();
+        e.setSalaire(null);
+
+        //when
+        //double augmentationSalaire = e.augmenterSalaire(0);
+
+        //Then
+        //Assertions.assertEquals(0, augmentationSalaire);
+    }
+    @Test
+    public void getAugmenterSalaire2(){
+        //Given
+        Employe e = new Employe();
+        Double salaire = e.getSalaire();
+
+        //When
+        //double augmenterSalaire2 = (salaire + e.augmenterSalaire(10));
+
+        //Then
+        //Assertions.assertEquals(1673.3 , augmenterSalaire2);
+
+
+    }
 
 }
