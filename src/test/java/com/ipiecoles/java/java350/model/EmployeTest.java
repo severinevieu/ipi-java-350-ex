@@ -1,10 +1,13 @@
 package com.ipiecoles.java.java350.model;
 
+import com.ipiecoles.java.java350.exception.EmployeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 public class EmployeTest {
@@ -73,6 +76,8 @@ public class EmployeTest {
             "2, 'M12345', 0, 1.0, 1700.0",
             "2, 'M12345', 8, 1.0, 2500.0"
     })
+
+
     public void getPrimeAnnuelle(Integer performance, String matricule, Long nbYearsAnciennete, Double tempsPartiel, Double primeAnnuelle){
         //Given
         Employe employe = new Employe("Doe", "John", matricule, LocalDate.now().minusYears(nbYearsAnciennete), Entreprise.SALAIRE_BASE, performance, tempsPartiel);
@@ -84,43 +89,49 @@ public class EmployeTest {
         Assertions.assertEquals(primeAnnuelle, prime);
 
     }
+
     @Test
-    public void getAugmenterSalaire(){
+    public void testAugmenterSalaireDefault(){
         //Given
         Employe e = new Employe();
-        e.setSalaire(1521.22);
 
         //When
-        //double augmenterSalaire = e.augmenterSalaire(5 );
+        double augmenterSalaire = e.getSalaire() * e.augmenterSalaire(1.05 );
 
         //Then
-        //Assertions.assertEquals(1604.88, augmenterSalaire);
+        Assertions.assertEquals(1597.2810000000002, augmenterSalaire);
     }
     @Test
-    public void getAugmentationSalaire(){
+    public void testAugmentationSalaireNull(){
         //Given
+
+        //TEST salaire null, cela soulève un java.lang.NullPointerException
+        //Mise en place d'une exception dans Employe
         Employe e = new Employe();
         e.setSalaire(null);
 
         //when
-        //double augmentationSalaire = e.augmenterSalaire(0);
+        double augmentationSalaire = e.getSalaire() * e.augmenterSalaire(1.3);
 
         //Then
-        //Assertions.assertEquals(0, augmentationSalaire);
+        Assertions.assertEquals(null, augmentationSalaire);
+        //LE TEST NE PASSE PAS VOLONTAIREMENT, le but est de faire remonter l'exception
     }
     @Test
-    public void getAugmenterSalaire2(){
+    public void testAugmenterSalaireDefinit(){
         //Given
         Employe e = new Employe();
-        Double salaire = e.getSalaire();
+        //Test avec un salaire différent de celui par défault
+        e.setSalaire(1200.50);
 
+        //On utilise Math.round pour arrondir le résultat
         //When
-        //double augmenterSalaire2 = (salaire + e.augmenterSalaire(10));
+        double augmenterSalaire = Math.round((e.getSalaire() * e.augmenterSalaire(1.1)));
 
         //Then
-        //Assertions.assertEquals(1673.3 , augmenterSalaire2);
-
+        Assertions.assertEquals(1321 , augmenterSalaire);
 
     }
+
 
 }
