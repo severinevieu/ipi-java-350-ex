@@ -72,20 +72,30 @@ public class Employe {
      *
      * @return le nombre de jours de RTT
      */
+
+    //Modification de la méthode pour la rendre plus propre
+
     public Integer getNbRtt(){
         return getNbRtt(LocalDate.now());
     }
 
     public Integer getNbRtt(LocalDate d){
-        int i1 = d.isLeapYear() ? 365 : 366;
-        int var = 104;
+        int annBissextile = d.isLeapYear() ? 365 : 366;
+        int weekend = 104;
         switch (LocalDate.of(d.getYear(),1,1).getDayOfWeek()){
-            case THURSDAY: if(d.isLeapYear()) var =  var + 1; break;
-            case FRIDAY: if(d.isLeapYear()) var =  var + 2; else var =  var + 1;
-            case SATURDAY: var = var + 1; break;
+            case THURSDAY:
+                if(d.isLeapYear()) weekend =  weekend + 1;
+                break;
+            case FRIDAY:
+                if(d.isLeapYear()) weekend =  weekend + 2;
+                else weekend =  weekend + 1;
+                break;
+            case SATURDAY:
+                weekend = weekend + 1;
+                break;
         }
-        int monInt = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((i1 - Entreprise.NB_JOURS_MAX_FORFAIT - var - Entreprise.NB_CONGES_BASE - monInt) * tempsPartiel);
+        int jourTrav = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+        return (int) Math.ceil((annBissextile - Entreprise.NB_JOURS_MAX_FORFAIT - weekend - Entreprise.NB_CONGES_BASE - jourTrav) * tempsPartiel);
     }
 
     /**
@@ -122,6 +132,9 @@ public class Employe {
         return Math.round(prime * this.tempsPartiel * 100)/100.0;
     }
 
+    /**
+     * @return the pourcentage
+     */
     //Augmenter salaire
     public double augmenterSalaire(double pourcentage){
 

@@ -90,6 +90,8 @@ public class EmployeTest {
 
     }
 
+
+    //TEST METHODE augmenterSalaire
     @Test
     public void testAugmenterSalaireDefault(){
         //Given
@@ -117,6 +119,7 @@ public class EmployeTest {
         //Then
         Assertions.assertEquals(null, augmentationSalaire);
         //LE TEST NE PASSE PAS VOLONTAIREMENT, le but est de faire remonter l'exception
+        //Mise en commentaire pour passer le build Travis
     }*/
 
     @Test
@@ -135,5 +138,29 @@ public class EmployeTest {
 
     }
 
+    @Test
+    public void testAugmenterSalairePourcentageZero(){
+        //Given
+        Employe e = new Employe();
 
+        //When
+        double augmenterSalaire = e.getSalaire() * e.augmenterSalaire(0);
+
+        //Then
+        Assertions.assertEquals(0, augmenterSalaire);
+
+    }
+
+    @ParameterizedTest()
+    @CsvSource({
+
+    })
+    void testgetNbRtt(){
+
+
+
+
+
+
+    }
 }
