@@ -1,0 +1,18 @@
+2019-03-22 16:10:19 - INFO  - Starting EmployeStepDefinitions on MacBook-Pro-de-severine.local with PID 5874 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-03-22 16:10:19 - INFO  - No active profile set, falling back to default profiles: default
+2019-03-22 16:10:22 - INFO  - Started EmployeStepDefinitions in 23.56 seconds (JVM running for 25.254)
+2019-03-22 16:10:22 - INFO  - Embauche de l'employé John Doe diplômé de CAP en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-03-22 16:10:38 - INFO  - Starting EmployeRepositoryTest on MacBook-Pro-de-severine.local with PID 5874 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-03-22 16:10:38 - INFO  - No active profile set, falling back to default profiles: default
+2019-03-22 16:10:38 - INFO  - Started EmployeRepositoryTest in 15.405 seconds (JVM running for 41.043)
+2019-03-22 16:10:53 - INFO  - Starting EmployeServiceIntegrationTest on MacBook-Pro-de-severine.local with PID 5874 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-03-22 16:10:53 - INFO  - No active profile set, falling back to default profiles: default
+2019-03-22 16:10:54 - INFO  - Started EmployeServiceIntegrationTest in 15.383 seconds (JVM running for 56.55)
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-03-22 16:10:54 - ERROR - Limite des 100000 matricules atteinte !
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-03-22 16:10:54 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-03-22 16:10:54 - ERROR - L'employé de matricule M00001 existe déjà en BDD
