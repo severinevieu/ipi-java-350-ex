@@ -68,7 +68,7 @@ public class Employe {
      * – jours de congés payés
      * – nombre de jours fériés tombant un jour ouvré
      *
-     * Au prorata de son pourcentage d'activité (arrondi au supérieur)
+     * Au prorata de son pourcentage d'activité (arrondi au supérieur) temps partiel (1.0)
      *
      * @return le nombre de jours de RTT
      */
@@ -94,8 +94,8 @@ public class Employe {
                 weekend = weekend + 1;
                 break;
         }
-        int jourTrav = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((annBissextile - Entreprise.NB_JOURS_MAX_FORFAIT - weekend - Entreprise.NB_CONGES_BASE - jourTrav) * tempsPartiel);
+        int jourFeries = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+        return (int) Math.ceil((annBissextile - Entreprise.NB_JOURS_MAX_FORFAIT - weekend - Entreprise.NB_CONGES_BASE - jourFeries ) * tempsPartiel);
     }
 
     /**

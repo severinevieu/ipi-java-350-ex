@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 public class EmployeTest {
 
@@ -151,11 +152,23 @@ public class EmployeTest {
 
     }
 
-   /* @ParameterizedTest()
+   @ParameterizedTest(name="jour de l'année{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{4},NbRtt{5}")
     @CsvSource({
+            "365, 225, 104, 25, 9, 118"
+            //Les valeurs correspondant (calculé à la main) au paramètre
+            //{0}=> index de l'ordre des paramètres
+            //365-9—104—25-218=9
 
     })
-    void testgetNbRtt(){
+    void testGetNbRtt(int annBissextile, int jourFeries, int weekend, Integer NB_CONGES_BASE, int NbRtt, Integer NB_JOURS_MAX_FORFAIT){
+        //Given
+        Employe e = new Employe();
 
-    }*/
+        //When
+        int testNbRtt = e.getNbRtt();
+
+        //Then
+        Assertions.assertEquals(NbRtt,testNbRtt);
+
+    }
 }

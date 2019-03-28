@@ -64,26 +64,36 @@ public final class Entreprise {
 
         return Arrays.asList(
                 // 1er janvier	Jour de l’an
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 1,1),
                 // Lendemain du dimanche de Pâques.	Lundi de Pâques
                 datePaque.get(now.getYear()).plusDays(1L),
                 // 1er mai	Fête du Travail
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 5,1),
                 // 8 mai Fête de la Victoire
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 5,8),
                 // Jeudi 40 jours après Pâques Ascension Fête chrétienne célébrant la montée de Jésus aux cieux.
+                //2019 ASCENSION JEUDI
                 datePaque.get(now.getYear()).plusDays(40L),
                 // Le lundi suivant le dimanche de Pentecôte (le septième après Pâques).
+                //2019 DIMANCHE pentecote
                 datePaque.get(now.getYear()).plusDays(50L),
                 // 14 juillet Fête nationale
+                //2019 DIMANCHE FETE NATIONALE
                 LocalDate.of(now.getYear(), 7,14),
                 // 15 août Assomption
+                //2019 JEUDI ASSOMPTION
                 LocalDate.of(now.getYear(), 8,15),
                 // 1er novembre	Toussaint Fête de tous les saints de l’Église catholique.
+                //2019 TOUSSAINT VENDREDI
                 LocalDate.of(now.getYear(), 11,1),
                 // 11 novembre Armistice de 1918
+                // 2019 ARMISTICE LUNDI
                 LocalDate.of(now.getYear(), 11,11),
                 // 25 décembre Noël
+                //2015 NOEL MERCREDI
                 LocalDate.of(now.getYear(), 12,25)
 
         );
