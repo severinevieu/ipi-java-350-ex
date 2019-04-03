@@ -95,6 +95,7 @@ public final class Entreprise {
                 // 25 décembre Noël
                 //2015 NOEL MERCREDI
                 LocalDate.of(now.getYear(), 12,25)
+                //IL Y A 9 JOURS FERIES EN 2019 SUR LE JOURS OUVRES
 
         );
     }

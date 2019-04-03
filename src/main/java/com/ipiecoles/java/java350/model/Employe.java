@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Employe {
 
 
+    public LocalDate annBissextile;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -62,11 +63,11 @@ public class Employe {
 
     /**
      * Nombre de jours de RTT =
-     *   Nombre de jours dans l'année
-     * – plafond maximal du forfait jours de la convention collective
-     * – nombre de jours de repos hebdomadaires
-     * – jours de congés payés
-     * – nombre de jours fériés tombant un jour ouvré
+     *   Nombre de jours dans l'année 365 année non bissextile et 366 bissextile
+     * – plafond maximal du forfait jours de la convention collective NB_JOURS_MAX_FORFAIT = 218
+     * – nombre de jours de repos hebdomadaires weekend = 104
+     * – jours de congés payés NB_CONGES_BASE = 25
+     * – nombre de jours fériés tombant un jour ouvré jourFeries 2019 = 9
      *
      * Au prorata de son pourcentage d'activité (arrondi au supérieur) temps partiel (1.0)
      *

@@ -1,13 +1,10 @@
 package com.ipiecoles.java.java350.model;
 
-import com.ipiecoles.java.java350.exception.EmployeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -121,6 +118,7 @@ public class EmployeTest {
         Assertions.assertEquals(null, augmentationSalaire);
         //LE TEST NE PASSE PAS VOLONTAIREMENT, le but est de faire remonter l'exception
         //Mise en commentaire pour passer le build Travis
+        //Il faut enelever le commentaire pour le test en Coverage
     }*/
 
     @Test
@@ -152,9 +150,10 @@ public class EmployeTest {
 
     }
 
-   @ParameterizedTest(name="jour de l'année{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{4},NbRtt{5}")
+    //TEST NbRtt pour l'année 2019 avec l'appel à la classe LocalDate.of(d.getYear()
+   @ParameterizedTest(name="jour de l'année{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{5},NbRtt{4}")
     @CsvSource({
-            "365, 225, 104, 25, 9, 118"
+            "365, 9, 104, 25, 9, 118"
             //Les valeurs correspondant (calculé à la main) au paramètre
             //{0}=> index de l'ordre des paramètres
             //365-9—104—25-218=9
@@ -171,4 +170,5 @@ public class EmployeTest {
         Assertions.assertEquals(NbRtt,testNbRtt);
 
     }
+
 }
