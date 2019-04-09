@@ -67,36 +67,44 @@ public class Employe {
      * – plafond maximal du forfait jours de la convention collective NB_JOURS_MAX_FORFAIT = 218
      * – nombre de jours de repos hebdomadaires weekend = 104
      * – jours de congés payés NB_CONGES_BASE = 25
-     * – nombre de jours fériés tombant un jour ouvré jourFeries 2019 = 9
+     * – nombre de jours fériés tombant un jour ouvré jourFeries 2019 = 9 (selon mon calcul)
      *
-     * Au prorata de son pourcentage d'activité (arrondi au supérieur) temps partiel (1.0)
+     * Au prorata de son pourcentage d'activité (arrondi au supérieur) * temps partiel (1.0)
      *
      * @return le nombre de jours de RTT
      */
 
     //Modification de la méthode pour la rendre plus propre
 
-    public Integer getNbRtt(){
+    /*public Integer getNbRtt(){
         return getNbRtt(LocalDate.now());
-    }
+        //Pour pouvoir tester plusieurs années
 
-    public Integer getNbRtt(LocalDate d){
-        int annBissextile = d.isLeapYear() ? 365 : 366;
+    }*/
+
+    public Integer getNbRtt(LocalDate anneeDefinit){
+        int annBissextile = anneeDefinit.isLeapYear() ? 365 : 366;
         int weekend = 104;
-        switch (LocalDate.of(d.getYear(),1,1).getDayOfWeek()){
+        switch (LocalDate.of(anneeDefinit.getYear(),1,1).getDayOfWeek()){
             case THURSDAY:
-                if(d.isLeapYear()) weekend =  weekend + 1;
+                if(anneeDefinit.isLeapYear()) weekend += 1;
                 break;
             case FRIDAY:
-                if(d.isLeapYear()) weekend =  weekend + 2;
-                else weekend =  weekend + 1;
+                if(anneeDefinit.isLeapYear()) weekend += 2;
+                else weekend += 1;
                 break;
             case SATURDAY:
-                weekend = weekend + 1;
+                weekend += 1;
                 break;
         }
-        int jourFeries = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((annBissextile - Entreprise.NB_JOURS_MAX_FORFAIT - weekend - Entreprise.NB_CONGES_BASE - jourFeries ) * tempsPartiel);
+        int jourFeriesOuvres = (int) Entreprise.joursFeries(anneeDefinit).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+
+        return (int) Math.ceil((
+                annBissextile
+                        - Entreprise.NB_JOURS_MAX_FORFAIT
+                        - weekend
+                        - Entreprise.NB_CONGES_BASE
+                        - jourFeriesOuvres) * tempsPartiel);
     }
 
     /**

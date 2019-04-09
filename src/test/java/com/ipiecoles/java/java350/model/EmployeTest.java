@@ -121,6 +121,7 @@ public class EmployeTest {
         //Il faut enelever le commentaire pour le test en Coverage
     }*/
 
+
     @Test
     public void testAugmenterSalaireDefinit(){
         //Given
@@ -150,21 +151,74 @@ public class EmployeTest {
 
     }
 
-    //TEST NbRtt pour l'année 2019 avec l'appel à la classe LocalDate.of(d.getYear()
-   @ParameterizedTest(name="jour de l'année{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{5},NbRtt{4}")
+    //TEST NbRtt pour l'année 2019 avec l'appel à la classe LocalDate
+   @ParameterizedTest(name="jours de l'année{0}, jourFeriesOuvres{1}, weekend{2}, CongésBase{3}, NbJoursMax{5},NbRtt{4}")
     @CsvSource({
-            "365, 9, 104, 25, 9, 118"
+            "365, 9, 104, 25, 9, 218"
             //Les valeurs correspondant (calculé à la main) au paramètre
             //{0}=> index de l'ordre des paramètres
             //365-9—104—25-218=9
 
     })
-    void testGetNbRtt(int annBissextile, int jourFeries, int weekend, Integer NB_CONGES_BASE, int NbRtt, Integer NB_JOURS_MAX_FORFAIT){
+    void testGetNbRtt(int annBissextile, int jourFeriesOuvres, int weekend, Integer NB_CONGES_BASE, int NbRtt, Integer NB_JOURS_MAX_FORFAIT){
         //Given
         Employe e = new Employe();
 
         //When
-        int testNbRtt = e.getNbRtt();
+       // local.now pour tester sur l'année en cours
+        int testNbRtt = e.getNbRtt(LocalDate.now());
+
+        //Then
+        Assertions.assertEquals(NbRtt,testNbRtt);
+
+    }
+
+
+    //TEST NbRtt pour l'année 2021 avec l'appel à la classe LocalDate.of(anneeDefinit.getYear()
+    @ParameterizedTest(name="jours de l'année{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{5},NbRtt{4}")
+    @CsvSource({
+            "365, 11, 104, 25, 11, 218"
+            //Les valeurs correspondant (calculé à la main) au paramètre
+            //{0}=> index de l'ordre des paramètres
+            //365-11—104—25-218=7 pour l'année 2021
+
+    })
+
+    void testGetNbRtt2021(int annBissextile, int jourFeriesOuvres, int weekend, Integer NB_CONGES_BASE, int NbRtt, Integer NB_JOURS_MAX_FORFAIT){
+        //Given
+        Employe e = new Employe();
+
+        //When
+        //Test avec l'année 2021
+        int testNbRtt = e.getNbRtt(LocalDate.of(2021,1,1));
+
+        //Then
+        Assertions.assertEquals(NbRtt,testNbRtt);
+    }
+
+
+    //TEST NbRtt sur plusieurs années avec les paramètre de l'énoncé du TP
+    @ParameterizedTest(name="année définit{0}, jourFeries{1}, weekend{2}, CongésBase{3}, NbJoursMax{5},NbRtt{4}")
+    @CsvSource({
+            "2019, 11, 104, 25, 9, 218",
+            "2021, 7, 104, 25, 11, 218",
+            "2022, 7, 104, 25, 11, 218",
+            "2032, 7, 104, 25, 10, 218"
+
+            //Les valeurs correspondant (calculé à la main) au paramètre
+            //{0}=> index de l'ordre des paramètres
+            //365-11—104—25-218=7
+
+    })
+
+
+    void testGetNbRttPlusieursAnnees(int anneeDefinit, int jourFeriesOuvres, int weekend, Integer NB_CONGES_BASE, int NbRtt, Integer NB_JOURS_MAX_FORFAIT){
+        //Given
+        Employe e = new Employe();
+
+        //When
+        //Test avec les années 2019,2021,2022,2032
+        int testNbRtt = e.getNbRtt(LocalDate.of(anneeDefinit,1,1));
 
         //Then
         Assertions.assertEquals(NbRtt,testNbRtt);
