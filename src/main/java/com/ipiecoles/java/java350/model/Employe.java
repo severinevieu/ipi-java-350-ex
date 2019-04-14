@@ -1,7 +1,5 @@
 package com.ipiecoles.java.java350.model;
 
-import com.ipiecoles.java.java350.exception.EmployeException;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,7 @@ import java.util.Objects;
 public class Employe {
 
 
-    public LocalDate annBissextile;
+    public static final LocalDate annBissextile = null;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -67,7 +65,7 @@ public class Employe {
      * – plafond maximal du forfait jours de la convention collective NB_JOURS_MAX_FORFAIT = 218
      * – nombre de jours de repos hebdomadaires weekend = 104
      * – jours de congés payés NB_CONGES_BASE = 25
-     * – nombre de jours fériés tombant un jour ouvré jourFeries 2019 = 9 (selon mon calcul)
+     * – nombre de jours fériés tombant un jour ouvré jourFeries  //2019 = 9 (selon mon calcul)
      *
      * Au prorata de son pourcentage d'activité (arrondi au supérieur) * temps partiel (1.0)
      *
@@ -76,12 +74,11 @@ public class Employe {
 
     //Modification de la méthode pour la rendre plus propre
 
-    /*public Integer getNbRtt(){
+    public Integer getNbRtt(){
         return getNbRtt(LocalDate.now());
-        //Pour pouvoir tester plusieurs années
+    }
 
-    }*/
-
+    //Pour pouvoir tester plusieurs années on met en paramètre anneeDefinit
     public Integer getNbRtt(LocalDate anneeDefinit){
         int annBissextile = anneeDefinit.isLeapYear() ? 365 : 366;
         int weekend = 104;
