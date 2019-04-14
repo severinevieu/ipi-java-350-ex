@@ -1,5 +1,7 @@
 package com.ipiecoles.java.java350.model;
 
+import net.bytebuddy.pool.TypePool;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,6 @@ import java.util.Objects;
 public class Employe {
 
 
-    public static final LocalDate annBissextile = null;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
