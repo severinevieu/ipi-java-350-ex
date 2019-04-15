@@ -112,10 +112,16 @@ public class EmployeTest {
         e.setSalaire(null);
 
         //when
-        double augmentationSalaire = e.getSalaire() * e.augmenterSalaire(1.3);
+        try {
+           double augmentationSalaire = e.getSalaire() * e.augmenterSalaire(1.3);
+            Assertions.fail("lance un exception");
+        } catch (EmployeException e) {
+
 
         //Then
-        Assertions.assertEquals(null, augmentationSalaire);
+        Assertions.assertEquals("Le salaire ne peux pas être null !",
+                    exception.getMessage());
+        }
         //LE TEST NE PASSE PAS VOLONTAIREMENT, le but est de faire remonter l'exception
         //Mise en commentaire pour passer le build Travis
         //Il faut enelever le commentaire pour le test en Coverage
