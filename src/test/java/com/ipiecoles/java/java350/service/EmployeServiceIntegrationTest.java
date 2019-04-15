@@ -65,4 +65,27 @@ public class EmployeServiceIntegrationTest {
         Assertions.assertEquals(1825.46, employe.getSalaire().doubleValue());
     }
 
+    @Test
+    public void testIntegrationCalculPerformanceCommercial() throws EmployeException {
+
+        //Given
+        String nom = "Dupont";
+        String prenom = "Paul";
+        Integer performance = 4;
+        Double tempsPartiel = 1.0;
+        Long caTraite = 160000L;
+        Long objectifCa = 120000L;
+        employeRepository.save(new Employe(nom, prenom, "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, performance, tempsPartiel));
+
+
+        // When
+        Employe employe = employeRepository.findByMatricule("C12345");
+        employeService.calculPerformanceCommercial(employe.getMatricule(), caTraite, objectifCa);
+
+        // Then
+        employe = employeRepository.findByMatricule("C12345");
+
+        // Calcul à la main de la performance : 4(performance de base)+ 1(caTraite > objectifCa*1.05)+ 4(caTraite > objectifCa*1.2) =9
+        Assertions.assertEquals(9, employe.getPerformance().intValue());
+    }
 }

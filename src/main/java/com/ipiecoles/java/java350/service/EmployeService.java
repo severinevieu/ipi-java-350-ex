@@ -102,11 +102,12 @@ public class EmployeService {
 
     //La méthode doit rester en void
     public void calculPerformanceCommercial(String matricule, Long caTraite, Long objectifCa) throws EmployeException {
-        //Vérification des paramètres d'entrée
+
+        //Vérification des paramètres d'entrée qui ne peuvent être null
         if(caTraite == null || caTraite < 0 && objectifCa == null || objectifCa < 0){
             throw new EmployeException("Le chiffre d'affaire traité ou le chiffre d'affaire ne peut être négatif ou null !");
         }
-
+        //matricule doit commencer par un C, sinon renvoi d'un exeption
         if(matricule == null || !matricule.startsWith("C")){
             throw new EmployeException("Le matricule ne peut être null et doit commencer par un C !");
         }
