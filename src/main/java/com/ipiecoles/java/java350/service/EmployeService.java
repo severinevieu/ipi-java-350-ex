@@ -104,14 +104,18 @@ public class EmployeService {
     public void calculPerformanceCommercial(String matricule, Long caTraite, Long objectifCa) throws EmployeException {
 
         //Vérification des paramètres d'entrée qui ne peuvent être null
-        if(caTraite == null || caTraite < 0 && objectifCa == null || objectifCa < 0){
-            throw new EmployeException("Le chiffre d'affaire traité ou le chiffre d'affaire ne peut être négatif ou null !");
+        if(caTraite == null || caTraite < 0){
+            throw new EmployeException("Le chiffre d'affaire traité ne peut être négatif ou null !");
         }
+        if(objectifCa == null || objectifCa < 0){
+            throw new EmployeException("L'objectif du C.A ne peut être négatif ou null !");
+        }
+
         //matricule doit commencer par un C, sinon renvoi d'un exeption
         if(matricule == null || !matricule.startsWith("C")){
             throw new EmployeException("Le matricule ne peut être null et doit commencer par un C !");
         }
-        //Recherche de l'employé dans la base
+        //Recherche de l'employé dans la base si egale à null lever d'une exception
         Employe employe = employeRepository.findByMatricule(matricule);
         if(employe == null){
             throw new EmployeException("Le matricule " + matricule + " n'existe pas !");
@@ -122,7 +126,7 @@ public class EmployeService {
         if(caTraite >= objectifCa*0.8 && caTraite < objectifCa*0.95){
             performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance() - 2);
         }
-        //Cas 3
+        //Cas 3 on reste a la performance de base
         else if(caTraite >= objectifCa*0.95 && caTraite <= objectifCa*1.05){
             performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance());
         }
