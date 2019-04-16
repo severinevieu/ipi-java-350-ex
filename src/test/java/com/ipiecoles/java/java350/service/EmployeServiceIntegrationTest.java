@@ -88,4 +88,86 @@ public class EmployeServiceIntegrationTest {
         // Calcul à la main de la performance : 4(performance de base)+ 1(caTraite > objectifCa*1.05)+ 4(caTraite > objectifCa*1.2) =9
         Assertions.assertEquals(9, employe.getPerformance().intValue());
     }
+
+    @Test
+    public void testIntegrationCalculPerformanceCommercialPerformanceMoins2() throws EmployeException {
+
+        //Given
+        String nom = "Dujardin";
+        String prenom = "Jean";
+        Integer performance = -2;
+        Double tempsPartiel = 1.0;
+        Long caTraite = 110000L;
+        Long objectifCa = 120000L;
+        employeRepository.save(new Employe(nom, prenom, "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, performance, tempsPartiel));
+
+
+        // When
+        Employe employe = employeRepository.findByMatricule("C12345");
+        if(caTraite >= objectifCa*0.8 && caTraite < objectifCa*0.95){
+           performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance() - 2);
+        }
+        employeService.calculPerformanceCommercial(employe.getMatricule(), caTraite, objectifCa);
+
+        // Then
+        employe = employeRepository.findByMatricule("C12345");
+
+        Assertions.assertEquals(2, employe.getPerformance().intValue());
+    }
+
+    @Test
+    public void testIntegrationCalculPerformanceCommercialPerformanceBase() throws EmployeException {
+
+        //Given
+        String nom = "Rochefort";
+        String prenom = "Jean";
+        Integer performance = PERFORMANCE_BASE;
+        Double tempsPartiel = 1.0;
+        Long caTraite = 110000L;
+        Long objectifCa = 120000L;
+        employeRepository.save(new Employe(nom, prenom, "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, performance, tempsPartiel));
+
+
+        // When
+        Employe employe = employeRepository.findByMatricule("C12345");
+        employeService.calculPerformanceCommercial(employe.getMatricule(), caTraite, objectifCa);
+        if(caTraite >= objectifCa*0.95 && caTraite <= objectifCa*1.05){
+            performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance());
+        }
+
+
+        // Then
+        employe = employeRepository.findByMatricule("C12345");
+
+        Assertions.assertEquals(1, employe.getPerformance().intValue());
+    }
+
+    @Test
+    public void testIntegrationCalculPerformanceCommercialPerformancePlusUn() throws EmployeException {
+
+        //Given
+        String nom = "Diaz";
+        String prenom = "Cameron";
+        Integer performance = +1;
+        Double tempsPartiel = 1.0;
+        Long caTraite = 110000L;
+        Long objectifCa = 120000L;
+        employeRepository.save(new Employe(nom, prenom, "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, performance, tempsPartiel));
+
+
+        // When
+        Employe employe = employeRepository.findByMatricule("C12345");
+        employeService.calculPerformanceCommercial(employe.getMatricule(), caTraite, objectifCa);
+        if(caTraite <= objectifCa*1.2 && caTraite > objectifCa*1.05){
+
+
+
+        // Then
+        employe = employeRepository.findByMatricule("C12345");
+
+        Assertions.assertEquals(1, employe.getPerformance().intValue());
+    }
+
+
+    }
 }

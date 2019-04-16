@@ -200,7 +200,7 @@ public class EmployeServiceTest {
 
 
   @Test
-    public void testCalculPerformanceCommercial() throws EmployeException {
+    public void testCalculPerformanceCommercialInexistant() throws EmployeException {
         //Given
         String matricule = "C00000";
         Long caTraite = 10000L;
@@ -219,7 +219,71 @@ public class EmployeServiceTest {
       }
 
     }
+
+    @Test
+    public void testCalculPerformanceCommercialCatraiteNagatif() throws EmployeException {
+        //Given
+        String matricule = "C00003";
+        Long caTraite = -100L;
+        Long objectifCA = 8000L;
+
+
+        //When
+        try {
+            Employe employe = employeRepository.findByMatricule("C00003");
+            employeService.calculPerformanceCommercial(matricule, caTraite, objectifCA);
+            Assertions.fail("Doit lancer un exception");
+        } catch (EmployeException e4) {
+            //Then
+            Assertions.assertEquals("Le chiffre d'affaire traité ne peut être négatif ou null !",
+                    e4.getMessage());
+        }
+
+    }
+    @Test
+    public void testCalculPerformanceCommercialObjectifCAeNagatif() throws EmployeException {
+        //Given
+        String matricule = "C00003";
+        Long caTraite = 10000L;
+        Long objectifCA = -800L;
+
+
+        //When
+        try {
+            Employe employe = employeRepository.findByMatricule("C00003");
+            employeService.calculPerformanceCommercial(matricule, caTraite, objectifCA);
+            Assertions.fail("Doit lancer un exception");
+        } catch (EmployeException e5) {
+            //Then
+            Assertions.assertEquals("L'objectif du C.A ne peut être négatif ou null !",
+                    e5.getMessage());
+        }
+
+    }
+
+    @Test
+
+  public void testCalculPerformanceCommercialAvecPerformanceDefinit() throws EmployeException {
+        //Given
+        String matricule = "C23456";
+        Long caTraite = 10000L;
+        Long objectifCA = -800L;
+
+
+        //When
+        try {
+            Employe employe = employeRepository.findByMatricule("C00003");
+            employeService.calculPerformanceCommercial(matricule, caTraite, objectifCA);
+            Assertions.fail("Doit lancer un exception");
+        } catch (EmployeException e5) {
+            //Then
+            Assertions.assertEquals("L'objectif du C.A ne peut être négatif ou null !",
+                    e5.getMessage());
+        }
+
+    }
 }
+
 
 
 
