@@ -140,15 +140,14 @@ public class EmployeService {
         }
         //Si autre cas, on reste à la performance de base.
 
-
-        //Affectation et sauvegarde
-        employe.setPerformance(performance);
-        employeRepository.save(employe);
-
         //Calcul de la performance moyenne
         Double performanceMoyenne = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
         if(performanceMoyenne != null && performance > performanceMoyenne){
             performance++;
         }
+
+        //Affectation et sauvegarde
+        employe.setPerformance(performance);
+        employeRepository.save(employe);
     }
 }
