@@ -105,7 +105,7 @@ public class Employe {
     /**
      * Calcul de la prime annuelle selon la règle :
      * Pour les managers : Prime annuelle de base bonnifiée par l'indice prime manager
-     * Pour les autres employés, la prime de base plus éventuellement la prime de performance calculée si l'employé
+     * Pour les autres employés : prime de base + la prime de performance calculée si l'employé
      * n'a pas la performance de base, en multipliant la prime de base par un l'indice de performance
      * (égal à la performance à laquelle on ajoute l'indice de prime de base)
      *

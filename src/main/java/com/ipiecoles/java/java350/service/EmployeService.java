@@ -85,15 +85,15 @@ public class EmployeService {
      * Méthode calculant la performance d'un commercial en fonction de ses objectifs et du chiffre d'affaire traité dans l'année.
      * Cette performance lui est affectée et sauvegardée en BDD
      *
-     * 1 : Si le chiffre d'affaire est inférieur de plus de 20% à l'objectif fixé, le commercial retombe à la performance de base
+     * 1 : Si le chiffre d'affaire est inférieur de plus de 20% à l'objectif fixé, le commercial retombe à la performance de base (1)
      * 2 : Si le chiffre d'affaire est inférieur entre 20% et 5% par rapport à l'ojectif fixé, il perd 2 de performance (dans la limite de la performance de base)
      * 3 : Si le chiffre d'affaire est entre -5% et +5% de l'objectif fixé, la performance reste la même.
-     * 4 : Si le chiffre d'affaire est supérieur entre 5 et 20%, il gagne 1 de performance
-     * 5 : Si le chiffre d'affaire est supérieur de plus de 20%, il gagne 4 de performance
+     * 4 : Si le chiffre d'affaire est supérieur à l'objectif CA entre 5 et 20% ,le commercial gagne 1 de performance
+     * 5 : Si le chiffre d'affaire est supérieur de plus de 20% à l'objectif, il gagne 4 de performance
      *
      * Si la performance ainsi calculée est supérieure à la moyenne des performances des commerciaux, il reçoit + 1 de performance.
      *
-     * @param matricule le matricule du commercial
+     * @param matricule le matricule du commercial qui doit commencer par C
      * @param caTraite le chiffre d'affaire traité par le commercial pendant l'année
      * @param objectifCa l'object de chiffre d'affaire qui lui a été fixé
      *
@@ -141,24 +141,25 @@ public class EmployeService {
         //Si autre cas, on reste à la performance de base.
 
         //Appel a la methode calculPerformabceMoyenne
-        performance = calculPerformanceMoyenne(performance);
+        performance = calculPerformanceSuperieur(performance);
 
         //Affectation et sauvegarde
         employe.setPerformance(performance);
         employeRepository.save(employe);
     }
 
-
     /**
-     * Méthode calculant la performance moyenne
+     * Méthode calculant la performance moyenne :
+     *
+     * Ajout d'un point de performance (+1) pour les commerciaux ayant des résultats supérieur à la performance moyenne.
      *
      * @param performance
      *
      * @throws EmployeException Si le matricule est null ou ne commence pas par un C
      */
-    //Calcul de la performance moyenne
+    
 
-    public Integer calculPerformanceMoyenne(Integer performance)throws EmployeException{
+    public Integer calculPerformanceSuperieur(Integer performance)throws EmployeException{
         Double performanceMoyenne = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
         if(performanceMoyenne != null && performance > performanceMoyenne){
             performance++;
