@@ -140,6 +140,8 @@ public class EmployeService {
         }
         //Si autre cas, on reste à la performance de base.
 
+        //Appel a la methode calculPerformabceMoyenne
+        performance = calculPerformanceMoyenne(performance);
 
         //Affectation et sauvegarde
         employe.setPerformance(performance);
@@ -156,11 +158,11 @@ public class EmployeService {
      */
     //Calcul de la performance moyenne
 
-    public void calculPerformanceMoyenne(Integer performance)throws EmployeException{
+    public Integer calculPerformanceMoyenne(Integer performance)throws EmployeException{
         Double performanceMoyenne = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
         if(performanceMoyenne != null && performance > performanceMoyenne){
             performance++;
         }
-
+        return performance;
     }
 }

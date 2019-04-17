@@ -59,3 +59,34 @@
 2019-04-17 16:23:07 - INFO  - Starting EmployeRepositoryTest on MBP-de-severine with PID 2458 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
 2019-04-17 16:23:07 - INFO  - No active profile set, falling back to default profiles: default
 2019-04-17 16:23:19 - INFO  - Started EmployeRepositoryTest in 12.979 seconds (JVM running for 18.439)
+2019-04-17 16:34:51 - INFO  - Starting EmployeRepositoryTest on MBP-de-severine with PID 2547 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-17 16:34:51 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-17 16:34:55 - INFO  - Started EmployeRepositoryTest in 4.487 seconds (JVM running for 6.83)
+2019-04-17 16:34:56 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2547 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-17 16:34:56 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-17 16:34:56 - INFO  - Started EmployeServiceIntegrationTest in 0.881 seconds (JVM running for 8.086)
+2019-04-17 16:34:56 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 16:34:57 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:34:57 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:34:57 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-17 16:34:57 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:34:57 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 16:34:57 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:34:57 - ERROR - L'employé de matricule M00001 existe déjà en BDD
+2019-04-17 16:35:48 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2555 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-17 16:35:48 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-17 16:35:53 - INFO  - Started EmployeServiceIntegrationTest in 4.879 seconds (JVM running for 6.744)
+2019-04-17 16:36:38 - INFO  - Starting EmployeRepositoryTest on MBP-de-severine with PID 2559 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-17 16:36:38 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-17 16:36:42 - INFO  - Started EmployeRepositoryTest in 4.459 seconds (JVM running for 6.69)
+2019-04-17 16:36:42 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2559 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-17 16:36:42 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-17 16:36:43 - INFO  - Started EmployeServiceIntegrationTest in 0.985 seconds (JVM running for 7.973)
+2019-04-17 16:36:43 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 16:36:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:36:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:36:44 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-17 16:36:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:36:44 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 16:36:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 16:36:44 - ERROR - L'employé de matricule M00001 existe déjà en BDD

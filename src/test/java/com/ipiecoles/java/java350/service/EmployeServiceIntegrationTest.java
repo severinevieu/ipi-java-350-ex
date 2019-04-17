@@ -87,7 +87,7 @@ public class EmployeServiceIntegrationTest {
         employe = employeRepository.findByMatricule("C12345");
 
         // Calcul à la main de la performance : 4(performance de base)+ 1(caTraite > objectifCa*1.05)+ 4(caTraite > objectifCa*1.2) =9
-        Assertions.assertEquals(8, employe.getPerformance().intValue());
+        Assertions.assertEquals(9, employe.getPerformance().intValue());
     }
 
     @Test
@@ -113,7 +113,7 @@ public class EmployeServiceIntegrationTest {
         // Then
         employe = employeRepository.findByMatricule("C12345");
 
-        Assertions.assertEquals(1, employe.getPerformance().intValue());
+        Assertions.assertEquals(2, employe.getPerformance().intValue());
     }
 
     @Test
