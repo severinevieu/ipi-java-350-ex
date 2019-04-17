@@ -94,3 +94,14 @@
 2019-04-16 20:09:52 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2784 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
 2019-04-16 20:09:52 - INFO  - No active profile set, falling back to default profiles: default
 2019-04-16 20:09:55 - INFO  - Started EmployeServiceIntegrationTest in 2.896 seconds (JVM running for 3.943)
+2019-04-16 20:27:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-16 20:27:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-16 20:27:44 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-16 20:27:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-16 20:27:44 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-16 20:27:44 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-16 20:27:44 - ERROR - L'employé de matricule M00001 existe déjà en BDD
+2019-04-16 20:28:11 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2993 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-16 20:28:11 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-16 20:28:14 - INFO  - Started EmployeServiceIntegrationTest in 2.882 seconds (JVM running for 4.088)
+2019-04-16 20:28:14 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 

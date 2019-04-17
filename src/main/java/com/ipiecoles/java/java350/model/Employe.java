@@ -73,10 +73,6 @@ public class Employe {
 
     //Modification de la méthode pour la rendre plus propre
 
-    public Integer getNbRtt(){
-        return getNbRtt(LocalDate.now());
-    }
-
     //Pour pouvoir tester plusieurs années on met en paramètre anneeDefinit
     public Integer getNbRtt(LocalDate anneeDefinit){
         int annBissextile = anneeDefinit.isLeapYear() ? 365 : 366;
