@@ -9,3 +9,10 @@
 2019-04-17 09:11:55 - INFO  - No active profile set, falling back to default profiles: default
 2019-04-17 09:11:59 - INFO  - Started EmployeServiceIntegrationTest in 23.804 seconds (JVM running for 25.024)
 2019-04-17 09:11:59 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 14:46:41 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 14:46:41 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 14:46:41 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-17 14:46:41 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 14:46:41 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-17 14:46:41 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-17 14:46:41 - ERROR - L'employé de matricule M00001 existe déjà en BDD
