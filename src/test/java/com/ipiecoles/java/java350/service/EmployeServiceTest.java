@@ -265,20 +265,20 @@ public class EmployeServiceTest {
 
   public void testCalculPerformanceCommercialAvecPerformanceDefinit() throws EmployeException {
         //Given
-        String matricule = "C23456";
+        String matricule = "";
         Long caTraite = 10000L;
-        Long objectifCA = -800L;
+        Long objectifCA = 8000L;
 
 
         //When
         try {
-            Employe employe = employeRepository.findByMatricule("C00003");
+            Employe employe = employeRepository.findByMatricule("");
             employeService.calculPerformanceCommercial(matricule, caTraite, objectifCA);
             Assertions.fail("Doit lancer un exception");
-        } catch (EmployeException e5) {
+        } catch (EmployeException e6) {
             //Then
-            Assertions.assertEquals("L'objectif du C.A ne peut être négatif ou null !",
-                    e5.getMessage());
+            Assertions.assertEquals("Le matricule ne peut être null et doit commencer par un C !",
+                    e6.getMessage());
         }
 
     }
