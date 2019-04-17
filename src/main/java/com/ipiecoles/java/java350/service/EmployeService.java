@@ -140,14 +140,27 @@ public class EmployeService {
         }
         //Si autre cas, on reste à la performance de base.
 
-        //Calcul de la performance moyenne
+
+        //Affectation et sauvegarde
+        employe.setPerformance(performance);
+        employeRepository.save(employe);
+    }
+
+
+    /**
+     * Méthode calculant la performance moyenne
+     *
+     * @param performance
+     *
+     * @throws EmployeException Si le matricule est null ou ne commence pas par un C
+     */
+    //Calcul de la performance moyenne
+
+    public void calculPerformanceMoyenne(Integer performance)throws EmployeException{
         Double performanceMoyenne = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
         if(performanceMoyenne != null && performance > performanceMoyenne){
             performance++;
         }
 
-        //Affectation et sauvegarde
-        employe.setPerformance(performance);
-        employeRepository.save(employe);
     }
 }
