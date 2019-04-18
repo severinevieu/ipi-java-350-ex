@@ -50,8 +50,12 @@ public class Employe {
      *
      * @return le nombre d'année d'ancienneté
      */
-    public final Integer getNombreAnneeAnciennete() {
-        return dateEmbauche != null && LocalDate.now().getYear() >= dateEmbauche.getYear() ? LocalDate.now().getYear() - dateEmbauche.getYear() : 0;
+    public Integer getNombreAnneeAnciennete() {
+        if(dateEmbauche != null && dateEmbauche.isBefore(LocalDate.now())){
+            return LocalDate.now().getYear() - dateEmbauche.getYear();
+        }
+        return 0;
+
     }
 
     public Integer getNbConges() {
@@ -92,6 +96,7 @@ public class Employe {
                  weekend += 0;
                  break;
         }
+
         int jourFeriesOuvres = (int) Entreprise.joursFeries(anneeDefinit).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
 
         return (int) Math.ceil((
@@ -100,6 +105,7 @@ public class Employe {
                         - weekend
                         - Entreprise.NB_CONGES_BASE
                         - jourFeriesOuvres) * tempsPartiel);
+
     }
 
     /**
@@ -220,15 +226,14 @@ public class Employe {
     /**
      * @param salaire the salaire to set
      */
-    public boolean setSalaire(Double salaire) {
+    public Double setSalaire(Double salaire) throws EmployeException {
         this.salaire = salaire;
 
         //Mise en place d'une exception suite à test TDD
-        if (salaire == null) {
-            throw new IllegalArgumentException("Le salaire ne peux pas être null!!");
-
+        if(salaire == null){
+            throw new EmployeException("Le salaire ne peux pas être null!!");
         }
-        return false;
+        return salaire;
     }
 
     public Integer getPerformance() {

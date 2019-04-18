@@ -2,7 +2,9 @@ language: java
 
 addons:
   sonarcloud:
+
     organization: "severinevieu-github"
 
 script:
   - mvn org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=severinevieu_ipi-java-350-ex
+
