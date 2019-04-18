@@ -37,6 +37,7 @@ public class EmployeService {
      * @throws EntityExistsException Si le matricule correspond à un employé existant
      */
 
+  
     //Remove the declaration of thrown exception 'javax.persistence.EntityExistsException' which is a runtime exception
     public void embaucheEmploye(String nom, String prenom, Poste poste, NiveauEtude niveauEtude, Double tempsPartiel) throws EmployeException{
         logger.debug("Coucou");
@@ -85,6 +86,7 @@ public class EmployeService {
      * Méthode calculant la performance d'un commercial en fonction de ses objectifs et du chiffre d'affaire traité dans l'année.
      * Cette performance lui est affectée et sauvegardée en BDD
      *
+
      * 1 : Si le chiffre d'affaire est inférieur de plus de 20% à l'objectif fixé, le commercial retombe à la performance de base (1)
      * 2 : Si le chiffre d'affaire est inférieur entre 20% et 5% par rapport à l'ojectif fixé, il perd 2 de performance (dans la limite de la performance de base)
      * 3 : Si le chiffre d'affaire est entre -5% et +5% de l'objectif fixé, la performance reste la même.
@@ -99,6 +101,7 @@ public class EmployeService {
      *
      * @throws EmployeException Si le matricule est null ou ne commence pas par un C
      */
+  
 
     //La méthode doit rester en void
     public void calculPerformanceCommercial(String matricule, Long caTraite, Long objectifCa) throws EmployeException {
@@ -116,6 +119,7 @@ public class EmployeService {
             throw new EmployeException("Le matricule ne peut être null et doit commencer par un C !");
         }
         //Recherche de l'employé dans la base si egale à null lever d'une exception
+
         Employe employe = employeRepository.findByMatricule(matricule);
         if(employe == null){
             throw new EmployeException("Le matricule " + matricule + " n'existe pas !");
@@ -126,6 +130,7 @@ public class EmployeService {
         if(caTraite >= objectifCa*0.8 && caTraite < objectifCa*0.95){
             performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance() - 2);
         }
+
         //Cas 3 on reste a la performance de base
         else if(caTraite >= objectifCa*0.95 && caTraite <= objectifCa*1.05){
             performance = Math.max(Entreprise.PERFORMANCE_BASE, employe.getPerformance());
@@ -139,6 +144,7 @@ public class EmployeService {
             performance = employe.getPerformance() + 4;
         }
         //Si autre cas, on reste à la performance de base.
+
 
         //Appel a la methode calculPerformabceMoyenne
         performance = calculPerformanceSuperieur(performance);
@@ -165,5 +171,10 @@ public class EmployeService {
             performance++;
         }
         return performance;
+
+
+        //Affectation et sauvegarde
+        employe.setPerformance(performance);
+        employeRepository.save(employe);
     }
 }

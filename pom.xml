@@ -17,6 +17,12 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	<scm>
+		<connection>scm:git:git@github.com:pjvilloud/ipi-java-350-ex.git</connection>
+		<url>https://github.com/pjvilloud/ipi-java-350-ex.git</url>
+		<developerConnection>scm:git:git@github.com:pjvilloud/ipi-java-350-ex.git</developerConnection>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -61,12 +67,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.thoughtworks.gauge</groupId>
-			<artifactId>gauge-java</artifactId>
-			<version>0.6.9</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>4.2.6</version>
@@ -90,6 +90,15 @@
 			<version>6.2.0</version>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.gauge</groupId>
+            <artifactId>gauge-java</artifactId>
+            <version>0.7.1</version>
+            <scope>test</scope>
+        </dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -138,6 +147,8 @@
 					</targetTests>
 				</configuration>
 			</plugin>
+
+
 		</plugins>
 	</build>
 
@@ -159,11 +170,6 @@
 						</reports>
 					</reportSet>
 				</reportSets>
-			</plugin>
-			<plugin>
-				<groupId>org.pitest</groupId>
-				<artifactId>pitest-maven</artifactId>
-				<version>LATEST</version>
 			</plugin>
 		</plugins>
 	</reporting>
