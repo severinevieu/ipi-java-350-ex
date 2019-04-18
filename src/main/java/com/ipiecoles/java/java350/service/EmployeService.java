@@ -21,7 +21,7 @@ public class EmployeService {
     private EmployeRepository employeRepository;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    private Employe employe;
 
 
     /**
@@ -172,9 +172,5 @@ public class EmployeService {
         }
         return performance;
 
-
-        //Affectation et sauvegarde
-        employe.setPerformance(performance);
-        employeRepository.save(employe);
     }
 }
