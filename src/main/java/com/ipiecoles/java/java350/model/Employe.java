@@ -1,5 +1,7 @@
 package com.ipiecoles.java.java350.model;
 
+import com.ipiecoles.java.java350.exception.EmployeException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -220,15 +222,14 @@ public class Employe {
     /**
      * @param salaire the salaire to set
      */
-    public boolean setSalaire(Double salaire) {
+    public Double setSalaire(Double salaire) throws EmployeException {
         this.salaire = salaire;
 
         //Mise en place d'une exception suite à test TDD
-        if (salaire == null) {
-            throw new IllegalArgumentException("Le salaire ne peux pas être null!!");
-
+        if(salaire == null){
+            throw new EmployeException("Le salaire ne peux pas être null!!");
         }
-        return false;
+        return salaire;
     }
 
     public Integer getPerformance() {

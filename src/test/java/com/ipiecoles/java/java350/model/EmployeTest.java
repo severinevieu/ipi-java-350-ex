@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java350.model;
 
+import com.ipiecoles.java.java350.exception.EmployeException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -103,33 +104,27 @@ public class EmployeTest {
     }
 
     /*@Test
-    public void testAugmentationSalaireNull(){
+    public void testAugmentationSalaireNull() throws Exception{
         //Given
-
-        //TEST salaire null, cela soulève un java.lang.NullPointerException
-        //Mise en place d'une exception dans Employe
         Employe e = new Employe();
         e.setSalaire(null);
 
         //when
+        //Mise en place d'une exception dans Employe suite test TDD
         try {
-           double augmentationSalaire = e.getSalaire() * e.augmenterSalaire(1.3);
-            Assertions.fail("lance un exception");
-        } catch (EmployeException e) {
-
-
-        //Then
-        Assertions.fail("Le salaire ne peux pas être null !",
-                    exception.getMessage());
+            double augmentationSalaire = e.getSalaire() * e.augmenterSalaire(1.3);
+            Assertions.fail("lance une exception");
+        } catch (Exception e1) {
+            //Then
+            Assertions.assertEquals("Le salaire ne peux pas être null!!",
+                    e1.getMessage());
         }
+
         //LE TEST NE PASSE PAS VOLONTAIREMENT, le but est de faire remonter l'exception
-        //Mise en commentaire pour passer le build Travis
-        //Il faut enelever le commentaire pour le test en Coverage
     }*/
 
-
     @Test
-    public void testAugmenterSalaireDefinit(){
+    public void testAugmenterSalaireDefinit() throws Exception {
         //Given
         Employe e = new Employe();
         //Test avec un salaire différent de celui par défault
