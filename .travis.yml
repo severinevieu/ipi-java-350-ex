@@ -2,6 +2,7 @@ language: java
 
 addons:
   sonarcloud:
+
     organization: "severinevieu-github"
 
 script:
