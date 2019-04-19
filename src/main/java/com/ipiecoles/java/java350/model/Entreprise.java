@@ -13,7 +13,12 @@ public final class Entreprise {
     public static final Integer NB_JOURS_MAX_FORFAIT = 218;
     private static final double PRIME_BASE = 1000d;
 
-    public static final Map<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new EnumMap<>(NiveauEtude.class);
+  
+    public static Map<NiveauEtude, Double> getCoeffSalaireEtudes() {
+        return coeffSalaireEtudes;
+    }
+
+    protected static final Map<NiveauEtude, Double> coeffSalaireEtudes = new EnumMap<>(NiveauEtude.class);
     private static final Map<Integer, LocalDate> datePaque = new HashMap<>();
 
     private Entreprise() {
@@ -21,13 +26,15 @@ public final class Entreprise {
     }
 
     static {
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.CAP, 1.0);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.BAC, 1.1);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.BTS_IUT, 1.2);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.LICENCE, 1.2);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.MASTER, 1.4);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.INGENIEUR, 1.6);
-        COEFF_SALAIRE_ETUDES.put(NiveauEtude.DOCTORAT, 1.7);
+
+        coeffSalaireEtudes.put(NiveauEtude.CAP, 1.0);
+        coeffSalaireEtudes.put(NiveauEtude.BAC, 1.1);
+        coeffSalaireEtudes.put(NiveauEtude.BTS_IUT, 1.2);
+        coeffSalaireEtudes.put(NiveauEtude.LICENCE, 1.2);
+        coeffSalaireEtudes.put(NiveauEtude.MASTER, 1.4);
+        coeffSalaireEtudes.put(NiveauEtude.INGENIEUR, 1.6);
+        coeffSalaireEtudes.put(NiveauEtude.DOCTORAT, 1.7);
+
 
         datePaque.put(2019, LocalDate.of(2019, 4, 21));
         datePaque.put(2020, LocalDate.of(2020, 4, 12));
@@ -51,6 +58,7 @@ public final class Entreprise {
         datePaque.put(2038, LocalDate.of(2038, 4, 25));
         datePaque.put(2039, LocalDate.of(2039, 4, 10));
         datePaque.put(2040, LocalDate.of(2040, 4, 1));
+        datePaque.put(2044, LocalDate.of(2044, 4, 17));
     }
 
     public static final String MATRICULE_INITIAL = "00000";
@@ -64,27 +72,38 @@ public final class Entreprise {
 
         return Arrays.asList(
                 // 1er janvier	Jour de l’an
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 1,1),
                 // Lendemain du dimanche de Pâques.	Lundi de Pâques
                 datePaque.get(now.getYear()).plusDays(1L),
                 // 1er mai	Fête du Travail
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 5,1),
                 // 8 mai Fête de la Victoire
+                //2019 MARDI
                 LocalDate.of(now.getYear(), 5,8),
                 // Jeudi 40 jours après Pâques Ascension Fête chrétienne célébrant la montée de Jésus aux cieux.
+                //2019 ASCENSION JEUDI
                 datePaque.get(now.getYear()).plusDays(40L),
                 // Le lundi suivant le dimanche de Pentecôte (le septième après Pâques).
+                //2019 DIMANCHE pentecote
                 datePaque.get(now.getYear()).plusDays(50L),
                 // 14 juillet Fête nationale
+                //2019 DIMANCHE FETE NATIONALE
                 LocalDate.of(now.getYear(), 7,14),
                 // 15 août Assomption
+                //2019 JEUDI ASSOMPTION
                 LocalDate.of(now.getYear(), 8,15),
                 // 1er novembre	Toussaint Fête de tous les saints de l’Église catholique.
+                //2019 TOUSSAINT VENDREDI
                 LocalDate.of(now.getYear(), 11,1),
                 // 11 novembre Armistice de 1918
+                // 2019 ARMISTICE LUNDI
                 LocalDate.of(now.getYear(), 11,11),
                 // 25 décembre Noël
+                //2015 NOEL MERCREDI
                 LocalDate.of(now.getYear(), 12,25)
+                //IL Y A 9 JOURS FERIES EN 2019 SUR LE JOURS OUVRES
 
         );
     }

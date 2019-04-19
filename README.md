@@ -69,11 +69,12 @@ Tester de façon intégrée un cas nominal de la méthode `embaucheEmploye` de l
 
 ## Maintenabilité
 
-- S'assurer de la lisibilité du code et du respect des conventions.
-- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log. Rediriger toutes les logs d'erreur dans un fichier `error.log` et tous vos logs dans un fichier `logs.log`. Ajouter la configuration de rotation tous les jours et faire en sorte que les fichiers ne puissent dépasser 10Mo.
-- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc avec maven.
-- Ajouter à votre Github une documentation statique avec MkDocs.
-- Ajouter des badges contenant les métriques principales de votre projet en haut de ce README à l'aide de l'API de Sonar : https://sonarcloud.io/web_api/api/project_badges
+
+- S'assurer de la lisibilité du code et du respect des conventions
+- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log.
+- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc.
+- Ajouter à votre Github une documentation statique avec Jekyll
+- Ajouter des badges contenant les métriques principales de votre projet en haut de ce README
 
 # Evaluation
 
@@ -100,7 +101,8 @@ Infos :
 ## Autres
 
 - S'assurer que votre code passe et qu'il n'y a aucun *code smells* ou *anomalies* ou *bugs* bloquants, critiques ou majeurs. Si c'est le cas, corriger le code fourni.
-- S'assurer d'avoir 100% de couverture de code sur les méthodes testés dans l'évaluation. Vérifier la couverture de code avec mutation et à défaut d'atteindre 100%, essayer d'obtenir un bon niveau.
+- S'assurer d'avoir 100% de couverture de code sur les méthodes testés dans l'évaluation
+
 
 ## Revue de code
 

@@ -1,0 +1,22 @@
+2019-04-14 19:40:15 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2429 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-14 19:40:15 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-14 19:40:19 - INFO  - Started EmployeServiceIntegrationTest in 3.622 seconds (JVM running for 4.932)
+2019-04-14 19:40:19 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-14 19:42:11 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-14 19:42:11 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-14 19:42:11 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-14 19:42:11 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-14 19:42:11 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-14 19:42:11 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-14 19:42:11 - ERROR - L'employé de matricule M00001 existe déjà en BDD
+2019-04-14 19:42:20 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 2457 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-14 19:42:20 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-14 19:42:23 - INFO  - Started EmployeServiceIntegrationTest in 2.854 seconds (JVM running for 3.891)
+2019-04-14 19:42:23 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-14 20:20:42 - INFO  - Embauche de l'employé{0} diplômé de {1} en tant que {2} avec un taux d'activité de {3} 
+2019-04-14 20:20:43 - INFO  - Embauche de l'employé{0} diplômé de {1} en tant que {2} avec un taux d'activité de {3} 
+2019-04-14 20:20:43 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-14 20:20:43 - INFO  - Embauche de l'employé{0} diplômé de {1} en tant que {2} avec un taux d'activité de {3} 
+2019-04-14 20:20:43 - INFO  - Embauche de l'employé{0} diplômé de {1} en tant que {2} avec un taux d'activité de {3} 
+2019-04-14 20:20:43 - INFO  - Embauche de l'employé{0} diplômé de {1} en tant que {2} avec un taux d'activité de {3} 
+2019-04-14 20:20:43 - ERROR - L'employé de matricule M00001 existe déjà en BDD
