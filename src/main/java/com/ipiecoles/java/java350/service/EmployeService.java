@@ -166,6 +166,10 @@ public class EmployeService {
 
 
     public Integer calculPerformanceSuperieur(Integer performance)throws EmployeException{
+
+        if (performance == null){
+        throw new EmployeException("La performance ne peut être null !");
+    }
         Double performanceMoyenne = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
         if(performanceMoyenne != null && performance > performanceMoyenne){
             performance++;

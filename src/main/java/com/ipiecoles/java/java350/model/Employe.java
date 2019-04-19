@@ -64,25 +64,35 @@ public class Employe {
         return Entreprise.NB_CONGES_BASE + this.getNombreAnneeAnciennete();
     }
 
+
     /**
-     * Nombre de jours de RTT =
-     *   Nombre de jours dans l'année 365 année non bissextile et 366 bissextile
-     * – plafond maximal du forfait jours de la convention collective NB_JOURS_MAX_FORFAIT = 218
-     * – nombre de jours de repos hebdomadaires weekend = 104
-     * – jours de congés payés NB_CONGES_BASE = 25
-     * – nombre de jours fériés tombant un jour ouvré jourFeries  //2019 = 9 (selon mon calcul)
-     *
-     * Au prorata de son pourcentage d'activité (arrondi au supérieur) * temps partiel (1.0)
+     * Nombre de jours de RTT pour l'année en cours
      *
      * @return le nombre de jours de RTT
      */
 
-    //Modification de la méthode pour la rendre plus propre
+    public Integer getNbRtt(){
+        return getNbRtt(LocalDate.now());
+    }
 
-    //Pour pouvoir tester plusieurs années on met en paramètre anneeDefinit
+
+    /**
+     * Nombre de jours de RTT =
+     *   Nombre de jours dans l'année 365 année non bissextile et 366 bissextile
+     * – Plafond maximal du forfait jours de la convention collective NB_JOURS_MAX_FORFAIT = 218
+     * – Nombre de jours de repos hebdomadaires weekend = 104
+     * – Jours de congés payés NB_CONGES_BASE = 25
+     * – Nombre de jours fériés tombant un jour ouvré jourFeries  //2019 = 9 (selon mon calcul)
+     *
+     * Au prorata de son pourcentage d'activité (arrondi au supérieur) * temps partiel (1.0)
+     *
+     */
+
+
     public Integer getNbRtt(LocalDate anneeDefinit){
-        int annBissextile = anneeDefinit.isLeapYear() ? 365 : 366;
+        int nbrJoursAnnee = anneeDefinit.isLeapYear() ? 365 : 366;
         int weekend = 104;
+
         switch (LocalDate.of(anneeDefinit.getYear(),1,1).getDayOfWeek()){
             case THURSDAY:
                 if(anneeDefinit.isLeapYear()) weekend += 1;
@@ -95,18 +105,22 @@ public class Employe {
                 weekend += 1;
                 break;
              default:
-                 weekend += 0;
                  break;
         }
 
-        int jourFeriesOuvres = (int) Entreprise.joursFeries(anneeDefinit).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+        Long jourFeriesOuvres = Entreprise.joursFeries(anneeDefinit).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
 
-        return (int) Math.ceil((
-                annBissextile
+        Integer NB_CONGES_BASE = this.getNbConges();
+
+        Integer NbRtt = nbrJoursAnnee
                         - Entreprise.NB_JOURS_MAX_FORFAIT
                         - weekend
-                        - Entreprise.NB_CONGES_BASE
-                        - jourFeriesOuvres) * tempsPartiel);
+                        - NB_CONGES_BASE
+                        - jourFeriesOuvres.intValue();
+
+                NbRtt = (int)Math.ceil(NbRtt * this.getTempsPartiel());
+
+        return NbRtt;
 
     }
 
@@ -141,17 +155,27 @@ public class Employe {
             prime = Entreprise.primeAnnuelleBase() * (this.performance + Entreprise.INDICE_PRIME_BASE) + primeAnciennete;
         }
         //Au pro rata du temps partiel.
-        return Math.round(prime * this.tempsPartiel * 100)/100.0;
+        return (prime * this.tempsPartiel * 100)/100.0;
     }
 
-    /**
+    /**Augmenter le salaire :
+     *
      * @return the pourcentage
      */
     //Augmenter salaire
-    public double augmenterSalaire(double pourcentage){
+    public double augmenterSalaire(double pourcentage) throws EmployeException {
+
+        if (salaire == null){
+            throw new EmployeException("Le salaire ne peux être null");
+        }
+
+        if (pourcentage == 0){
+            throw new EmployeException("Le pourcentage ne peux être égale à 0 !!");
+        }
+
+        this.setSalaire ((double) Math.round(this.salaire *(1 + pourcentage)));
 
         return pourcentage;
-
     }
 
     public Long getId() {
@@ -228,13 +252,8 @@ public class Employe {
     /**
      * @param salaire the salaire to set
      */
-    public Double setSalaire(Double salaire) throws EmployeException {
+    public Double setSalaire(Double salaire) {
         this.salaire = salaire;
-
-        //Mise en place d'une exception suite à test TDD
-        if(salaire == null){
-            throw new EmployeException("Le salaire ne peux pas être null!!");
-        }
         return salaire;
     }
 

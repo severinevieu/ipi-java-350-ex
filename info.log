@@ -1,3 +1,20 @@
-2019-04-18 20:43:44 - INFO  - Starting Java350Application on MBP-de-severine with PID 2535 (/Users/dev/Documents/GitHub/ipi-java-350-ex/target/classes started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
-2019-04-18 20:43:44 - INFO  - No active profile set, falling back to default profiles: default
-2019-04-18 20:43:46 - INFO  - Started Java350Application in 2.939 seconds (JVM running for 3.629)
+2019-04-19 18:16:51 - INFO  - Starting Java350Application on MBP-de-severine with PID 3795 (/Users/dev/Documents/GitHub/ipi-java-350-ex/target/classes started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-19 18:16:51 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-19 18:16:53 - INFO  - Started Java350Application in 2.974 seconds (JVM running for 3.639)
+2019-04-19 18:45:30 - INFO  - Starting EmployeRepositoryTest on MBP-de-severine with PID 3912 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-19 18:45:30 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-19 18:45:33 - INFO  - Started EmployeRepositoryTest in 2.915 seconds (JVM running for 4.066)
+2019-04-19 18:45:38 - INFO  - Starting EmployeServiceIntegrationTest on MBP-de-severine with PID 3915 (started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-19 18:45:38 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-19 18:45:41 - INFO  - Started EmployeServiceIntegrationTest in 3.047 seconds (JVM running for 4.137)
+2019-04-19 18:45:41 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-19 18:45:47 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-19 18:45:47 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-19 18:45:47 - ERROR - Limite des 100000 matricules atteinte !
+2019-04-19 18:45:47 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-19 18:45:47 - INFO  - Embauche de l'employé John Doe diplômé de BTS_IUT en tant que TECHNICIEN avec un taux d'activité de 1.0 
+2019-04-19 18:45:47 - INFO  - Embauche de l'employé John Doe diplômé de MASTER en tant que MANAGER avec un taux d'activité de 0.5 
+2019-04-19 18:45:47 - ERROR - L'employé de matricule M00001 existe déjà en BDD
+2019-04-19 18:45:55 - INFO  - Starting Java350Application on MBP-de-severine with PID 3921 (/Users/dev/Documents/GitHub/ipi-java-350-ex/target/classes started by dev in /Users/dev/Documents/GitHub/ipi-java-350-ex)
+2019-04-19 18:45:55 - INFO  - No active profile set, falling back to default profiles: default
+2019-04-19 18:45:57 - INFO  - Started Java350Application in 2.159 seconds (JVM running for 2.7)
